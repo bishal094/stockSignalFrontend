@@ -1,41 +1,53 @@
-
-    <div class="row">
-        <div class="col-md-6 pr-1">
-            <div class="form-group">
-            <label>Search stocks</label>
-            <input type="text" class="form-control" placeholder="Search by symbol or name...."  (keyup)="Search($event)">
-            </div>
-        </div>
+<div class="row">
+  <div class="col-md-6 pr-1">
+    <div class="form-group">
+      <label>Search stocks</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by symbol or name...."
+        (keyup)="Search($event)"
+      />
     </div>
+  </div>
+</div>
 <div class="card" *ngFor="let item of searchResults">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-2 d-flex flex-column">
-                <h6 class="text-info mb-3">Symbol</h6>
-                <h6>{{item.ticker}}</h6>
-            </div>
-            <div class="col-3 d-flex flex-column">
-                <h6 class="text-info mb-3">Name</h6>
-                <h6>{{item.name}}</h6>
-            </div>
-            <div class="col-3 d-flex flex-column">
-                <h6 class="text-info mb-3">Stock Exchange</h6>
-                <h6>{{item.exchange}}</h6>
-            </div>
-            <!-- <div class="col-2 d-flex flex-column">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-2 d-flex flex-column">
+        <h6 class="text-info mb-3">Symbol</h6>
+        <h6>{{ item.ticker }}</h6>
+      </div>
+      <div class="col-3 d-flex flex-column">
+        <h6 class="text-info mb-3">Name</h6>
+        <h6>{{ item.name }}</h6>
+      </div>
+      <div class="col-3 d-flex flex-column">
+        <h6 class="text-info mb-3">Stock Exchange</h6>
+        <h6>{{ item.exchange }}</h6>
+      </div>
+      <!-- <div class="col-2 d-flex flex-column">
                 <h6 class="text-info mb-3">Region</h6>
                 <h6>{{item['4. region']}}</h6>
             </div> -->
-            <div class="col-2">
-                <a routerLink="/add-stock-data/{{item.ticker}}" >
-                    <button class="btn btn-sm btn-info">Add</button>
-                </a>
-            </div>
-        </div>
+      <div class="col-2">
+        <a routerLink="/add-stock-data/{{ item.ticker }}">
+          <button class="btn btn-sm btn-info">Add</button>
+        </a>
+      </div>
+      <div class="col-2">
+        <a routerLink="/add-closed-stock-data/{{ item.ticker }}">
+          <button class="btn btn-sm btn-danger">Add Closed</button>
+        </a>
+      </div>
     </div>
+  </div>
 </div>
-<div class="card" *ngIf="!searchDone && searchResults.length === 0 && searchStarted">
-            <div class="card-body d-flex justify-content-center">
-                <div class="loader"></div>
-            </div>
+<div
+  class="card"
+  *ngIf="!searchDone && searchResults.length === 0 && searchStarted"
+>
+  <div class="card-body d-flex justify-content-center">
+    <div class="loader"></div>
+  </div>
 </div>

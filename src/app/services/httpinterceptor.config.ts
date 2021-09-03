@@ -49,6 +49,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         !request.url.includes("EditStockData") &&
         !request.url.includes("AddCryptoData") &&
         !request.url.includes("EditCryptoData") &&
+        !request.url.includes("AddClosedStockData") &&
         !request.url.includes("AddClosedCryptoData")
       ) {
         console.log("json applied");

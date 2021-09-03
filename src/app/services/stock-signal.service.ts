@@ -42,7 +42,7 @@ export class StockSignalService {
     if (file) {
       formData.append("file", file);
     }
-    return this.http.post(`${this.BASE_URL}/AddStockData`, formData, {
+    return this.http.post(`${this.BASE_URL}/AddClosedStockData`, formData, {
       headers,
     });
   }

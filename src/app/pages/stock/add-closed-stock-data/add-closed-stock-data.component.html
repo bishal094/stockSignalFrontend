@@ -115,6 +115,25 @@
           accept=".jpeg,.jpg,.png,.svg"
         />
       </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Closed date? </label>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              ngbDatepicker
+              #d="ngbDatepicker"
+              formControlName="closed_at"
+            />
+            <div class="input-group-append" (click)="d.toggle()">
+              <span class="input-group-text" id="basic-addon2">
+                <i class="nc-icon nc-calendar-60"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <button type="submit" class="btn btn-sm btn-success">Submit</button>

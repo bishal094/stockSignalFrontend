@@ -51,7 +51,7 @@ export const AdminLayoutRoutes: Routes = [
     component: AddClosedCryptoDataComponent,
   },
   {
-    path: "add-closed-stock-data/:symbol/:id",
+    path: "add-closed-stock-data/:symbol",
     component: AddClosedStockDataComponent,
   },
   { path: "edit-crypto-data/:id", component: EditCryptoComponent },

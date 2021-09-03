@@ -32,6 +32,7 @@ export class AddClosedStockDataComponent implements OnInit {
       buy: [null, Validators.required],
       sell: [null, Validators.required],
       potentialReturn: [null, Validators.required],
+      closed_at: [null, Validators.required],
       premium: [false],
     });
     this.route.params.subscribe((params) => {
@@ -51,7 +52,7 @@ export class AddClosedStockDataComponent implements OnInit {
     } else {
       if (this.AddStockForm.valid) {
         this.stockService
-          .addStockData(this.AddStockForm.value, this.file)
+          .addClosedStockData(this.AddStockForm.value, this.file)
           .subscribe((res) => {
             console.log(res);
             if (res.meta.success) {
