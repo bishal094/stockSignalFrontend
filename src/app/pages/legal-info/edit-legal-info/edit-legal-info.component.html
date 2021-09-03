@@ -1,0 +1,9 @@
+<h5>Edit Legal Content</h5>
+<form [formGroup]="htmlContentForm" (ngSubmit)="UpdateLegal()">
+  <div class="card">
+    <div class="card-body">
+      <angular-editor formControlName="value"></angular-editor>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-sm btn-success">Submit</button>
+</form>

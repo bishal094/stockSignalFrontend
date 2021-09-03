@@ -1,0 +1,43 @@
+<div class="card card-plain">
+  <div class="card-header d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <h4 class="card-title mr-3">Application Users</h4>
+    </div>
+    <button class="btn btn-sm btn-success" (click)="exportexcel()">
+      Export
+    </button>
+  </div>
+  <div class="card-body">
+    <table class="table" id="user-table">
+      <thead class="text-primary">
+        <th>Name</th>
+        <th>Email</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let datum of data">
+          <td>
+            {{ datum.firstName + " " + datum.lastName }}
+          </td>
+          <td>
+            {{ datum.email }}
+          </td>
+          <!-- <td>
+              <button
+                class="btn btn-primary btn-sm mb-2 mr-2"
+                routerLink="/edit-manual-data/{{ datum.id }}"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-danger btn-sm mb-2 mr-2"
+                (click)="Delete(datum.id)"
+              >
+                Delete
+              </button>
+            </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="card card-plain">
+  <div class="card-header d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <h4 class="card-title mr-3">Variables</h4>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="text-primary">
+        <th>Id</th>
+        <th>Variable</th>
+        <th>Value</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let variable of variables">
+          <td>
+            {{ variable.id }}
+          </td>
+          <td>
+            {{ variable.field }}
+          </td>
+          <td>
+            {{ variable.value }}
+          </td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm mb-2 mr-2"
+              (click)="EditAppVar(variable, editModal)"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ selectedAppVar.field }}
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label>Value</label>
+          <input
+            type="number"
+            class="form-control"
+            min="0"
+            [(ngModel)]="selectedAppVar.value"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-success"
+      (click)="modal.close('Save')"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>

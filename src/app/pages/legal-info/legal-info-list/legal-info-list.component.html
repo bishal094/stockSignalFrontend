@@ -1,0 +1,34 @@
+<div class="card card-plain">
+  <div class="card-header d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <h4 class="card-title mr-3">Legal Information</h4>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="text-primary">
+        <th>Id</th>
+        <th>Type</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let legal of legals">
+          <td>
+            {{ legal.id }}
+          </td>
+          <td>
+            {{ legal.field }}
+          </td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm mb-2 mr-2"
+              routerLink="/edit-legal/{{ legal.id }}"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

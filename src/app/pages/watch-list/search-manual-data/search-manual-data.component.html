@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-md-6 pr-1">
+    <div class="form-group">
+      <label>Search {{ type }}</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by name...."
+        (keyup)="Search($event)"
+      />
+    </div>
+  </div>
+</div>
+<div class="card" *ngFor="let item of searchResults">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-2 d-flex flex-column">
+        <h6 class="text-info mb-3">Symbol</h6>
+        <h6>{{ item.symbol ? item.symbol : item.ticker }}</h6>
+      </div>
+      <div class="col-3 d-flex flex-column">
+        <h6 class="text-info mb-3">Name</h6>
+        <h6>{{ item.name }}</h6>
+      </div>
+      <div class="col-3 d-flex flex-column">
+        <h6 class="text-info mb-3">
+          {{ item.total_supply ? "Total Supply" : "Exchange" }}
+        </h6>
+        <h6>{{ item.total_supply ? item.total_supply : item.exchange }}</h6>
+      </div>
+      <!-- <div class="col-2 d-flex flex-column">
+              <h6 class="text-info mb-3">Region</h6>
+              <h6>{{item['4. region']}}</h6>
+          </div> -->
+      <div class="col-2">
+        <a
+          routerLink="/add-manual-data/{{ typeIndex }}/{{
+            item.symbol ? item.symbol : item.ticker
+          }}"
+        >
+          <button class="btn btn-sm btn-info">Add</button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="card-body" *ngIf="type === 'crypto'; else stockResult">
+    <div class="row">
+      <div class="col-2 d-flex flex-column">
+        <h6 class="text-info mb-3">Symbol</h6>
+        <h6>{{ item.symbol }}</h6>
+      </div>
+      <div class="col-3 d-flex flex-column">
+        <h6 class="text-info mb-3">Name</h6>
+        <h6>{{ item.name }}</h6>
+      </div>
+      <div class="col-3 d-flex flex-column">
+        <h6 class="text-info mb-3">Total Supply</h6>
+        <h6>{{ item.total_supply }}</h6>
+      </div>
+      <div class="col-2">
+        <a routerLink="/add-manual-data/{{ typeIndex }}/{{ item.symbol }}">
+          <button class="btn btn-sm btn-info">Add</button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <ng-template #stockResult>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2 d-flex flex-column">
+          <h6 class="text-info mb-3">Symbol</h6>
+          <h6>{{ item.ticker }}</h6>
+        </div>
+        <div class="col-3 d-flex flex-column">
+          <h6 class="text-info mb-3">Name</h6>
+          <h6>{{ item.name }}</h6>
+        </div>
+        <div class="col-3 d-flex flex-column">
+          <h6 class="text-info mb-3">Stock Exchange</h6>
+          <h6>{{ item.exchange }}</h6>
+        </div>
+        <div class="col-2">
+          <a routerLink="/add-manual-data/{{ typeIndex }}/{{ item.ticker }}">
+            <button class="btn btn-sm btn-info">Add</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ng-template> -->
+</div>
+<div
+  class="card"
+  *ngIf="!searchDone && searchResults?.length === 0 && searchStarted"
+>
+  <div class="card-body d-flex justify-content-center">
+    <div class="loader"></div>
+  </div>
+</div>

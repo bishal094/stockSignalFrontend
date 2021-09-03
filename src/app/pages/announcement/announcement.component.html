@@ -1,0 +1,51 @@
+<div class="card card-plain">
+  <div class="card-header d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <h4 class="card-title mr-3">Announcements</h4>
+    </div>
+    <a routerLink="/add-announcement">
+      <button class="btn btn-sm btn-success">New</button>
+    </a>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="text-primary">
+        <th>Id</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let announcement of announcements">
+          <td>
+            {{ announcement.id }}
+          </td>
+          <td>
+            {{
+              announcement.message.length > 30
+                ? announcement.message.slice(0, 30) + "..."
+                : announcement.message
+            }}
+          </td>
+          <td>
+            {{ announcement.createdAt | date: "dd-MMM-yyyy" }}
+          </td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm mb-2 mr-2"
+              routerLink="/edit-announcement/{{ announcement.id }}"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-danger btn-sm mb-2 mr-2"
+              (click)="Delete(announcement.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

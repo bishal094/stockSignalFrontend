@@ -1,0 +1,43 @@
+<div class="card card-plain">
+  <div class="card-header d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <h4 class="card-title mr-3">{{ title[typeIndex] }}</h4>
+    </div>
+    <a routerLink="/add-manual/{{ typeIndex }}">
+      <button class="btn btn-sm btn-success">New</button>
+    </a>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="text-primary">
+        <th>Symbol</th>
+        <th>Image</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let datum of data">
+          <td>
+            {{ datum.symbol }}
+          </td>
+          <td>
+            <img height="50" width="50" src="{{ datum.filePath }}" alt="" />
+          </td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm mb-2 mr-2"
+              routerLink="/edit-manual-data/{{ datum.id }}"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-danger btn-sm mb-2 mr-2"
+              (click)="Delete(datum.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

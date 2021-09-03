@@ -1,0 +1,25 @@
+<div class="sidebar-wrapper pt-5">
+  <ul class="nav">
+    <li *ngFor="let menuItem of menuItems; let i= index" routerLinkActive="active" class="{{menuItem.class}}">
+      <a [routerLink]="[menuItem.path]" *ngIf="menuItem.path !== '#'; else hasDropDown">
+        <i class="nc-icon {{menuItem.icon}}"></i>
+        <p>{{menuItem.title}}</p>
+      </a>
+      <ng-template #hasDropDown>
+        <a href="javascript:void()" (click)="dropDown[i] = !dropDown[i]">
+          <i class="nc-icon {{menuItem.icon}}"></i>
+          <p>{{menuItem.title}}</p>
+        </a>
+        <ul class="nav mt-0 ml-5" *ngIf="dropDown[i]">
+
+          <li *ngFor="let subMenuItem of menuItem.children" routerLinkActive="active" class="{{subMenuItem.class}}">
+            <a [routerLink]="[subMenuItem.path]" *ngIf="subMenuItem.path !== '#; else hasDropDown'">
+              <i class="nc-icon {{subMenuItem.icon}}"></i>
+              <p>{{subMenuItem.title}}</p>
+            </a>
+          </li>
+        </ul>
+      </ng-template>
+    </li>
+  </ul>
+</div>

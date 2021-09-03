@@ -1,0 +1,111 @@
+<div class="card p-4" *ngIf="cryptoDataDetail; else loading">
+  <h5>{{ symbol }} Details</h5>
+  <div class="card-body">
+    <div class="row">
+      <div
+        class="col-lg-2 d-flex flex-column mb-4"
+        *ngFor="let key of cryptoDataDetailKeys"
+      >
+        <p class="text-info mb-3 detail-title">
+          {{ key }}
+        </p>
+        <p>
+          {{ cryptoDataDetail[key] }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="card p-4">
+    <h5>{{ symbol }} Details</h5>
+    <div class="card-body d-flex justify-content-center">
+      <div class="loader"></div>
+    </div>
+  </div>
+</ng-template>
+
+<form [formGroup]="EditCryptoForm" (ngSubmit)="UpdateCrypto()" *ngIf="crypto">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>SYMBOL</label>
+        <input
+          type="text"
+          disabled
+          class="form-control"
+          formControlName="symbol"
+          [(ngModel)]="crypto.symbol"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Buy Below</label>
+        <input
+          type="number"
+          required
+          min="0"
+          class="form-control"
+          (keyup)="CalculatePotential()"
+          formControlName="buy"
+          [(ngModel)]="crypto.buy"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Sell Above</label>
+        <input
+          type="number"
+          required
+          (keyup)="CalculatePotential()"
+          min="0"
+          class="form-control"
+          formControlName="sell"
+          [(ngModel)]="crypto.sell"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Potential Return</label>
+        <input
+          type="text"
+          class="form-control"
+          disabled
+          formControlName="potentialReturn"
+          [(ngModel)]="crypto.potentialReturn"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label
+          >Is Premium?<input
+            type="checkbox"
+            class="form-control"
+            formControlName="premium"
+            [(ngModel)]="crypto.premium"
+          />
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <label>Image</label>
+      <div class="d-flex">
+        <img height="100" src="{{ crypto.logo }}" alt="" class="mr-3" />
+        <input
+          type="file"
+          name="file"
+          id="file"
+          (input)="selectFile($event)"
+          accept=".jpeg,.jpg,.png,.svg,.jfif"
+        />
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-sm btn-success">Update</button>
+</form>

@@ -1,0 +1,137 @@
+<div class="card p-4" *ngIf="cryptoDataDetail; else loading">
+  <h5>{{ symbol }} Details</h5>
+  <div class="card-body">
+    <div class="row">
+      <div
+        class="col-lg-2 d-flex flex-column mb-4"
+        *ngFor="let key of cryptoDataDetailKeys"
+      >
+        <p class="text-info mb-3 detail-title">
+          {{ key }}
+        </p>
+        <p>
+          {{ cryptoDataDetail[key] }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="card p-4">
+    <h5>{{ symbol }} Details</h5>
+    <div class="card-body d-flex justify-content-center">
+      <div class="loader"></div>
+    </div>
+  </div>
+</ng-template>
+
+<form [formGroup]="AddCryptoForm" (ngSubmit)="AddCrypto()">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>SYMBOL</label>
+        <input
+          type="text"
+          disabled
+          class="form-control"
+          formControlName="symbol"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Buy Below</label>
+        <input
+          type="number"
+          required
+          min="0"
+          class="form-control"
+          formControlName="buy"
+          (keyup)="CalculatePotential()"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Sell Above</label>
+        <input
+          type="number"
+          required
+          min="0"
+          class="form-control"
+          formControlName="sell"
+          (keyup)="CalculatePotential()"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Potential Return</label>
+        <input
+          type="text"
+          class="form-control"
+          disabled
+          formControlName="potentialReturn"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label
+          >Is Premium?<input
+            type="checkbox"
+            class="form-control"
+            formControlName="premium"
+          />
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <label>Image</label>
+      <div class="d-flex">
+        <img
+          *ngIf="!newImage"
+          height="100"
+          src="{{
+            'https://s2.coinmarketcap.com/static/img/coins/32x32/' +
+              symbolId +
+              '.png'
+          }}"
+          alt=""
+          class="mr-3"
+        />
+
+        <img *ngIf="newImage" height="100" src="{{ newImage }}" alt="" />
+        <input
+          type="file"
+          name="file"
+          id="file"
+          (input)="selectFile($event)"
+          accept=".jpeg,.jpg,.png,.svg"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Closed date? </label>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            formControlName="closed_at"
+          />
+          <div class="input-group-append" (click)="d.toggle()">
+            <span class="input-group-text" id="basic-addon2">
+              <i class="nc-icon nc-calendar-60"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-sm btn-success">Submit</button>
+</form>

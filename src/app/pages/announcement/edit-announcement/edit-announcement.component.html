@@ -1,0 +1,17 @@
+<h5>Edit Announcement</h5>
+<form [formGroup]="EditAnnouncementForm" (ngSubmit)="UpdateAnnouncement()">
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label>Announcement</label>
+        <textarea
+          class="form-control"
+          rows="50"
+          formControlName="message"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-sm btn-success">Submit</button>
+</form>
