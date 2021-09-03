@@ -37,6 +37,7 @@ import { AppVariablesComponent } from "app/pages/app-variables/app-variables.com
 import { AppUserComponent } from "app/pages/app-user/app-user.component";
 import { AddClosedCryptoDataComponent } from "app/pages/crypto/add-closed-crypto-data/add-closed-crypto-data.component";
 import { AddClosedStockDataComponent } from "app/pages/stock/add-closed-stock-data/add-closed-stock-data.component";
+import { AddNotificationComponent } from "app/pages/announcement/add-notification/add-notification.component";
 
 @NgModule({
   imports: [
@@ -78,6 +79,7 @@ import { AddClosedStockDataComponent } from "app/pages/stock/add-closed-stock-da
     AppUserComponent,
     AddClosedCryptoDataComponent,
     AddClosedStockDataComponent,
+    AddNotificationComponent,
   ],
   providers: [DatePipe],
 })

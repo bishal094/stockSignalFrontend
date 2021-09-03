@@ -41,7 +41,7 @@ export class AddCryptoComponent implements OnInit {
         (res) => {
           console.log(res);
           if (res) {
-            this.searchResults = res.data.stockRes;
+            this.searchResults = res.data.cryptoRes;
           }
           // this.fetchData(evt.target.value).subscribe((res)=>{
           //   console.log(res);

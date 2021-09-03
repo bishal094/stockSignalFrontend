@@ -29,7 +29,7 @@ export class AddAnnouncementComponent implements OnInit {
       .subscribe((res) => {
         console.log(res);
         if (res.meta.success) {
-          this.toastr.success(res.meta.message, "Announcement");
+          this.toastr.success(res.meta.message, "News");
           this.router.navigate(["announcements"]);
         }
       });

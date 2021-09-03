@@ -75,6 +75,13 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "/announcements",
+    title: "News",
+    children: [],
+    icon: "nc-single-copy-04",
+    class: "",
+  },
+  {
+    path: "/add-notification",
     title: "AnnounceMents",
     children: [],
     icon: "nc-send",

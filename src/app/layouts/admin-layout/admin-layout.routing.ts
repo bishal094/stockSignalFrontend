@@ -29,6 +29,7 @@ import { AppVariablesComponent } from "app/pages/app-variables/app-variables.com
 import { AppUserComponent } from "app/pages/app-user/app-user.component";
 import { AddClosedCryptoDataComponent } from "app/pages/crypto/add-closed-crypto-data/add-closed-crypto-data.component";
 import { AddClosedStockDataComponent } from "app/pages/stock/add-closed-stock-data/add-closed-stock-data.component";
+import { AddNotificationComponent } from "app/pages/announcement/add-notification/add-notification.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -61,6 +62,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "edit-manual-data/:id", component: EditManualDataComponent },
   { path: "announcements", component: AnnouncementComponent },
   { path: "add-announcement", component: AddAnnouncementComponent },
+  { path: "add-notification", component: AddNotificationComponent },
   { path: "edit-announcement/:id", component: EditAnnouncementComponent },
   { path: "legal", component: LegalInfoListComponent },
   { path: "edit-legal/:id", component: EditLegalInfoComponent },

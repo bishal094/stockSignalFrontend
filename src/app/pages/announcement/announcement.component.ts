@@ -29,7 +29,7 @@ export class AnnouncementComponent implements OnInit {
       this.announcementService.deleteAnnouncement(id).subscribe((res) => {
         console.log(res);
         if (res.meta.success) {
-          this.toastr.info(res.meta.message, "Crypto");
+          this.toastr.info(res.meta.message, "News");
           this.ngOnInit();
         }
       });

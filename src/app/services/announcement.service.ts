@@ -15,6 +15,9 @@ export class AnnouncementService {
   addAnnouncement(body): Observable<any> {
     return this.http.post(`${this.BASE_URL}/AddNotificationData`, body);
   }
+  addNotification(body): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/AddAnnouncement`, body);
+  }
   getAnnouncementById(id): Observable<any> {
     return this.http.get(`${this.BASE_URL}/GetNotificationDataById?id=${id}`);
   }
